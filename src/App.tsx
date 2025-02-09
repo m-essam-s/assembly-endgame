@@ -7,10 +7,10 @@ import LanguageChips from './components/LanguageChips'
 import Word from './components/Word'
 import NewGameButton from './components/NewGameButton'
 import { languages } from './languages'
-import { getFarewellText } from './utils'
+import { getFarewellText, getRandomWord } from './utils'
 
 function App() {
-  const [currentWord, setCurrentWord] = useState<string>("react")
+  const [currentWord, setCurrentWord] = useState<string>(() => getRandomWord())
   const [guessedLetters, setGuessedLetters] = useState<string[]>([])
 
   const wrongGuessCount =
@@ -37,7 +37,7 @@ function App() {
         isGameOver={isGameOver}
         isGameWon={isGameWon}
         isGameLost={isGameLost}
-        farewellText={getFarewellText(languages[wrongGuessCount - 1].name)}
+        farewellText={wrongGuessCount > 0 ? getFarewellText(languages[wrongGuessCount - 1].name) : ""}
         isLastGuessIncorrect={isLastGuessIncorrect ? true : false}
       />
       <LanguageChips
