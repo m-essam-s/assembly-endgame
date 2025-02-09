@@ -24,7 +24,10 @@ function App() {
       <Header />
       <GameStatuse />
       <LanguageChips />
-      <Word currentWord={currentWord} />
+      <Word
+        currentWord={currentWord}
+        guessedLetters={guessedLetters}
+      />
       <Keyboard
         addGuessedLetter={addGuessedLetter}
         currentWord={currentWord}

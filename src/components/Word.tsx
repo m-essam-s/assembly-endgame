@@ -1,4 +1,12 @@
-const Word = ({ currentWord }: { currentWord: string }) => {
+const Word = (
+    {
+        currentWord,
+        guessedLetters
+    }: {
+        currentWord: string
+        guessedLetters: string[]
+    }
+) => {
     return (
         <section className="flex justify-center gap-[2px]">
             {currentWord.split("").map((letter, index) => (
@@ -6,7 +14,7 @@ const Word = ({ currentWord }: { currentWord: string }) => {
                     key={index}
                     className=" flex items-center justify-center text-[1.125rem] bg-[#323232] text-[#F9F4DA] border-b-[1px] border-[#F9F4DA] w-[40px] h-[40px]"
                 >
-                    {letter.toUpperCase()}
+                    {guessedLetters.includes(letter) ? letter.toUpperCase() : ""}
                 </span>
             ))}
         </section>
