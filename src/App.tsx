@@ -8,6 +8,7 @@ import Word from './components/Word'
 import NewGameButton from './components/NewGameButton'
 import { languages } from './languages'
 import { getFarewellText, getRandomWord } from './utils'
+import Confetti from "react-confetti"
 
 function App() {
   const [currentWord, setCurrentWord] = useState<string>(() => getRandomWord())
@@ -37,6 +38,13 @@ function App() {
 
   return (
     <main className='flex flex-col items-center '>
+      {
+        isGameWon &&
+        <Confetti
+          recycle={false}
+          numberOfPieces={1000}
+        />
+      }
       <Header />
       <GameStatuse
         wrongGuessCount={wrongGuessCount}
