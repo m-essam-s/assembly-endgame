@@ -29,6 +29,12 @@ function App() {
     )
   }
 
+  function startNewGame() {
+    setCurrentWord(getRandomWord())
+    setGuessedLetters([])
+
+  }
+
   return (
     <main className='flex flex-col items-center '>
       <Header />
@@ -46,6 +52,7 @@ function App() {
       <Word
         currentWord={currentWord}
         guessedLetters={guessedLetters}
+        isGameLost={isGameLost}
       />
       <Keyboard
         addGuessedLetter={addGuessedLetter}
@@ -55,6 +62,7 @@ function App() {
       />
       <NewGameButton
         isGameOver={isGameOver}
+        startNewGame={startNewGame}
       />
     </main>
   )
