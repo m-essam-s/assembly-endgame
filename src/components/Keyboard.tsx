@@ -4,11 +4,13 @@ const Keyboard = (
     {
         addGuessedLetter,
         currentWord,
-        guessedLetters
+        guessedLetters,
+        isGameOver
     }: {
         addGuessedLetter: (arg0: string) => void,
         currentWord: string,
-        guessedLetters: string[]
+        guessedLetters: string[],
+        isGameOver: boolean
     }
 ) => {
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
@@ -22,8 +24,9 @@ const Keyboard = (
                     <button
                         key={letter}
                         onClick={() => addGuessedLetter(letter)}
+                        disabled={isGameOver}
                         className={clsx(
-                            "rounded-[3px] bg-[#FCBA29] text-[#000] border-[1px] border-[#D7D7D7] w-[35px] h-[35px] cursor-pointer",
+                            "rounded-[3px] bg-[#FCBA29] text-[#000] border-[1px] border-[#D7D7D7] w-[35px] h-[35px] cursor-pointer disabled:cursor-not-allowed disabled:opacity-[0.3]",
                             isCorrect && "bg-green-500",
                             isWrong && "bg-red-500"
                         )}

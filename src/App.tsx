@@ -37,7 +37,7 @@ function App() {
         isGameOver={isGameOver}
         isGameWon={isGameWon}
         isGameLost={isGameLost}
-        farewellText={getFarewellText(languages[wrongGuessCount].name)}
+        farewellText={getFarewellText(languages[wrongGuessCount - 1].name)}
         isLastGuessIncorrect={isLastGuessIncorrect ? true : false}
       />
       <LanguageChips
@@ -51,6 +51,7 @@ function App() {
         addGuessedLetter={addGuessedLetter}
         currentWord={currentWord}
         guessedLetters={guessedLetters}
+        isGameOver={isGameOver}
       />
       <NewGameButton
         isGameOver={isGameOver}
