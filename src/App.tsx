@@ -11,19 +11,24 @@ function App() {
   const [currentWord, setCurrentWord] = useState<string>("react")
   const [guessedLetters, setGuessedLetters] = useState<string[]>([])
 
+  const wrongGuessCount =
+    guessedLetters.filter(letter => !currentWord.includes(letter)).length
+
   const addGuessedLetter = (letter: string) => {
     setGuessedLetters(
       prevLetters => prevLetters.includes(letter) ? prevLetters : [...prevLetters, letter]
     )
   }
 
-  console.log(guessedLetters)
+  console.log({ wrongGuessCount })
 
   return (
     <main className='flex flex-col items-center '>
       <Header />
       <GameStatuse />
-      <LanguageChips />
+      <LanguageChips
+        wrongGuessCount={wrongGuessCount}
+      />
       <Word
         currentWord={currentWord}
         guessedLetters={guessedLetters}
